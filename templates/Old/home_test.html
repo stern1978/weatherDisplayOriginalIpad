@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta http-equiv='refresh' content="900">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' href="/static/css/mystyle.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="/static/js/time.js"></script>
+        <title>Home Test</title>
+    </head>
+    <body onload=display_ct();>
+        <table style="width:100%">
+            <tr>
+                <td>
+                    <div id="time" style="font-size: 200px; text-align: center"></div>
+                </td>
+            </tr>
+        </table>
+        <table style="width:100%">
+            <tr>
+                <td style="width: 20%">
+                    <p style="text-align: left">Inside</p>
+                    <h1 style="text-align: left; font-size: 100px">{{avgtemp}}&#8457;</h1>
+                </td>
+                <td style="width: 50%">
+                    <img style="width: 100%;" src={{icon}} alt="weather img">
+                </td>
+                <td style="width: 25%">
+                    <p style="text-align: center">Feels Like {{realfeel}}&#8457;</p>
+                    <h1 style="font-size: 100px">{{outsidetemp}}&#8457;</h1>
+                    <h2 style="text-align: center">
+                        <span style="color: red">High: {{high}}</span>
+                        <span style="color: blue">Low: {{low}}</span>
+                    </h2>
+                </td>
+            </tr>
+        </table>
+        <!-- Forcast -->
+        <table style="width:100%">
+            <tr>
+                {% for x in forcast %}
+                <td>
+                <div class="container">
+                    <div class="top-center" style="text-align: center; font-size: 50px; text-shadow: 2px 2px black">{{x[0]}}</div>
+                    <img style="float: left; width: 100%" src={{x[3]}} alt="weather img">
+                    <h2 style="text-align: center; text-shadow: 2px 2px black">
+                        <span style="color: red">High: {{x[1]}}</span>
+                        <span style="color: blue">Low: {{x[2]}}</span>
+                    </h2>
+                    {% if x[5] != 0 and x[6] != 0 %}
+                    <h2 style="text-align: center; text-shadow: 2px 2px black">
+                        <span>&#128167;{{x[5]}}"</span>
+                        <span>&#10052;{{x[6]}}"</span>
+                    </h2>
+                    {% elif x[5] != 0 %}
+                    <h2 style="text-align: center; text-shadow: 2px 2px black">
+                        <span>&#128167;{{x[5]}}"</span>
+                        <span style="color: black">{{x[6]}}"</span>
+                    </h2>
+                    {% elif x[6] != 0 %}
+                    <h2 style="text-align: center; text-shadow: 2px 2px black">
+                        <span>&#10052;{{x[6]}}"</span>
+                        <span style="color: black">{{x[5]}}"</span>
+                    </h2>
+                    {% else %}
+                    <h2 style="color: black; text-align: center">
+                        <span style="color: black">{{x[5]}}"</span>
+                        <span style="color: black">{{x[6]}}"</span>
+                    </h2>
+                    {% endif %}
+                </div>
+                </td>
+                {% endfor %}
+            </tr>
+        </table>
+
+        {% if alerts %}
+        <marquee behavior="scroll" direction="left" scrollamount="30" style="text-align: center; font-size: 100px; color: white">{{alerts}}</marquee>
+        {% endif %}
+    </body>
+</html>
