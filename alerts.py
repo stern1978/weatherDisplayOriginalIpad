@@ -9,7 +9,7 @@ alert_counter = 0
 headers = {'User-Agent': '(homeweatherapp, aa.ron.t.stern@gmail.com)'}
 
 try:
-    nws_alerts_url = 'https://api.weather.gov/alerts/active/zone/NYZ075'  # 'https://api.weather.gov/alerts/active?point=40.6168364,-74.0361376'
+    nws_alerts_url = 'https://api.weather.gov/alerts/active/zone/NYZ075
     nws_alerts_get = requests.get(nws_alerts_url, headers=headers)
     try:
         nws_alerts_data = nws_alerts_get.json()
