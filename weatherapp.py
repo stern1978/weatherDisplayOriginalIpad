@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-import requests
 import json
 from flask import Flask, render_template, redirect
 from time import sleep

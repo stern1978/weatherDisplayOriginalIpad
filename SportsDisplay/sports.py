@@ -32,7 +32,7 @@ def index():
       if url_data['leagues'][0]['calendarEndDate'] > now_espn:
          if url_data['leagues'][0]['season']['type']['id'] != '4':
             sport_name = url_data['leagues'][0]['name']
-            #print(sport_name)
+            print(sport_name, url_data['leagues'][0]['season']['type']['id'])
             sport_dict[sport_name] = []
             for events in url_data:
                try:
@@ -51,9 +51,10 @@ def index():
                                  game_status = url_data['events'][counter]['competitions'][0]['status']['type']['name']
                                  time = url_data['events'][counter]['date']
                                  try:
-                                       channel = url_data['events'][counter]['competitions'][counter]['broadcasts'][counter]['names']
+                                    channel = '- On ' + url_data['events'][counter]['competitions'][0]['broadcasts'][0]['names'][0]
                                  except:
-                                       channel = ''
+                                    channel = ''
+                                 #print(channel)
                                  team_dict[time] =[]
                                  team_dict[time].append([away_team, away_score, away_logo, home_team, home_score, home_logo, match_status, game_status, sport_name, channel])
                                  
