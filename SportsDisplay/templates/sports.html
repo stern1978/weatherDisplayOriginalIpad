@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta http-equiv='refresh' content="60">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' href="/static/css/mystyle.css">
+        <title>Sports</title>
+    </head>
+    <body>
+            <div class="column">
+                <table style="width: 100%;">
+                <th style="text-align: center;">Scoreboard</th>
+                </table>
+                {%for x in sport_dict%}
+                {%for i in sport_dict[x]%}
+                <table style="width: 100%; border-top: 1px solid grey;">
+                    <p style="line-height: 1; margin: 0; text-align: left;">{{i[8]}} {{i[9]}}</p>
+                </table>
+                    <table style="width: 100%; border-top: 1px solid grey;">
+                    <tr style="line-height: 1; margin: 0;">
+                        {%if "English Premier League" in i[8]%}
+                        <td><img style="width: 100px; float: center;" src={{i[5]}} alt="home_logo;"></td>
+                        {%if "STATUS_SCHEDULED" in i%}
+                        <td style="margin: 0; font-size: 40px;">VS</td>
+                        {%else%}
+                        <td style="font-size: 50px; text-align: center;"> {{i[4]}} - {{i[1]}}</td>
+                        {%endif%} 
+                        <td><img style="width: 100px; float: center;" src={{i[2]}} alt="away_logo;"></td>
+                        <tr>
+                            <td>{{i[3]}}</td>
+                            <td style="line-height: 1; margin: 0; font-size: 30px; text-align: center;">{{i[6]}}</td>
+                            <td>{{i[0]}}</td>
+                        {%elif "Club Friendly" in i[8]%}
+                        <td><img style="width: 100px; float: center;" src={{i[5]}} alt="home_logo;"></td>
+                        {%if "STATUS_SCHEDULED" in i%}
+                        <td style="margin: 0; font-size: 40px;">VS</td>
+                        {%else%}
+                        <td style="font-size: 50px; text-align: center;"> {{i[4]}} - {{i[1]}}</td>
+                        {%endif%} 
+                        <td><img style="width: 100px; float: center;" src={{i[2]}} alt="away_logo;"></td>
+                        <tr>
+                            <td>{{i[3]}}</td>
+                            <td style="line-height: 1; margin: 0; font-size: 30px; text-align: center;">{{i[6]}}</td>
+                            <td>{{i[0]}}</td>
+                        {%else%}
+                        <td><img style="width: 100px; float: center;" src={{i[2]}} alt="away_logo;"></td>
+                        {%if "STATUS_SCHEDULED" in i%}
+                        <td style="margin: 0; font-size: 40px;">@</td>
+                        {%else%}
+                        <td style="font-size: 50px; text-align: center;"> {{i[1]}} - {{i[4]}}</td>
+                        {%endif%}
+                        <td><img style="width: 100px; float: center;" src={{i[5]}} alt="home_logo;"></td>
+                        <tr>
+                            <td>{{i[0]}}</td>
+                            <td style="line-height: 1; margin: 0; font-size: 30px; text-align: center;">{{i[6]}}</td>
+                            <td>{{i[3]}}</td>                        
+                        {%endif%}
+                {%endfor%}
+                </table>
+                {%endfor%}
+            </div>
+    </body>
+</html>

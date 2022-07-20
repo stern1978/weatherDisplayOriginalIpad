@@ -35,10 +35,11 @@ try:
                 '%a %d')
             forecast_max = round(weather_data['daily'][day_counter]['temp']['max'])
             forecast_min = round(weather_data['daily'][day_counter]['temp']['min'])
-            forecast_icon = "/static/" + weather_data['daily'][day_counter]['weather'][0]['icon'] + ".png"
+            forecast_icon = "/static/png/" + weather_data['daily'][day_counter]['weather'][0]['icon'] + ".png"
             forecast_description = weather_data['daily'][day_counter]['weather'][0]['description']
             forecast_pop = round(weather_data['daily'][day_counter]['pop'] * 100)
             avg_temp = (forecast_max + forecast_min) / 2
+            dew_point = weather_data['current']['dew_point']
             try:
                 forecast_rain = round(weather_data['daily'][day_counter]['rain'] / 25.4, 2)
             except KeyError:
@@ -71,7 +72,8 @@ try:
                         'forecast_icon': forecast_icon,
                         'forecast_pop': forecast_pop,
                         'forecast_rain': forecast_rain,
-                        'forecast_snow': forecast_snow}
+                        'forecast_snow': forecast_snow,
+                        'dew_point': dew_point}
 
             # forecast_list.append(day_dict)
             # forecast_dict['forecast'] = forecast_list

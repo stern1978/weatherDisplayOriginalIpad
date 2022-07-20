@@ -1,0 +1,15 @@
+{
+    "outside_temp": 71,
+    "real_feel": 69,
+    "high": 77,
+    "low": 66,
+    "rain": 0.0,
+    "snow": 0.0,
+    "rain_hr": 0.0,
+    "snow_hr": 0.0,
+    "sunrise": "05:44 AM",
+    "sunset": "08:00 PM",
+    "clouds": 0,
+    "description": "Clear Sky",
+    "icon": "/static/01d.png"
+}

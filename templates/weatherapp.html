@@ -10,7 +10,7 @@
         <link rel='stylesheet' href="/static/css/mystyle.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="/static/js/time.js"></script>
-        <title>weather</title>
+        <title>Weather</title>
     </head>
     <body onload=display_ct();>
         
@@ -33,6 +33,7 @@
                 
                 <td> 
                     <img style="width: 100%" src={{icon}} alt="weather img">
+                    <!--object data="{{icon}}" style="float: left;" type="image/svg+xml"></object-->
                     <p style="text-align: center; line-height: 0px; text-shadow: 2px 2px 2px black">{{description}}</p>
                     <p style="text-align: center; line-height: 0px; text-shadow: 2px 2px 2px black">Cloud Cover {{clouds}}&#37;</p>
                 </td>
@@ -44,12 +45,11 @@
                         <span style="color: red">{{high}}&#8457;</span>
                         <span style="color: blue">{{low}}&#8457;</span>
                     </h2>
-                    {% if rain != 0 or snow != 0 %}
                     <h2 style="text-align: center; text-shadow: 2px 2px 2px black"> Per Hr. 
-                        <span>&#128167;{{rainhr}}"</span>
-                        <span>&#10052;{{snowhr}}"</span>
+                        <span>&#128167;{{rain_hr}}"</span>
+                        <span>&#10052;{{snow_hr}}"</span>
                     </h2>
-                    {% endif %}
+                    <h2 style="text-align: center;">Humidity {{humidity}}&#37;</h2>
                 </td>
             </tr>
         </table>
@@ -60,35 +60,31 @@
                 <td style="width: auto">
                 <div class="container">
                     <img style="width: 100%" src={{x[3]}} alt="weather img">
-                    <div class="top-center" style="font-size: 40px; text-shadow: 2px 2px 2px black">{{x[0]}}</div>
+                    <div class="top-center" style="font-size: 40px; text-shadow: 2px 2px 2px black;">{{x[0]}}</div>
                     
-                    <div class="bottom-left" style="text-align: center; font-size: 25px; text-shadow: 2px 2px 2px black">
-                        <span style="color: red">{{x[1]}}&#8457;</span>
+                    <div class="bottom-left" style="text-align: center; font-size: 25px; text-shadow: 2px 2px 2px black;">
+                        <span style="color: red;">{{x[1]}}&#8457;</span>
                     </div>
-                    <div class="bottom-right" style="text-align: center; font-size: 25px; text-shadow: 2px 2px 2px black">
-                        <span style="color: blue">{{x[2]}}&#8457;</span>
+                    <div class="bottom-right" style="text-align: center; font-size: 25px; text-shadow: 2px 2px 2px black;">
+                        <span style="color: blue;">{{x[2]}}&#8457;</span>
                     </div>
                     
                     {% if x[5] != 0 and x[6] != 0 %}
-                    <h2 style="text-align: center; text-shadow: 2px 2px 2px black">
-                        <span>{{x[4]}}</span>
-                        <span>&#128167;{{x[5]}}"</span>
-                        <span>&#10052;{{x[6]}}"</span>
+                    <h2 style="text-align: center; text-shadow: 2px 2px 2px black;">
+                        <span style="font-size: 15px">{{x[4]}} &#128167;{{x[5]}}" &#10052;{{x[6]}}"</span>
                     </h2>
                     {% elif x[5] != 0 %}
-                    <h2 style="text-align: center; text-shadow: 2px 2px 2px black">
-                        <span>{{x[4]}}&#37;</span>
-                        <span>&#128167;{{x[5]}}"</span>
+                    <h2 style="text-align: center; text-shadow: 2px 2px 2px black;">
+                        <span style="font-size: 20px">{{x[4]}}&#37; &#128167;{{x[5]}}"</span>
                     </h2>
                     {% elif x[6] != 0 %}
-                    <h2 style="text-align: center; text-shadow: 2px 2px 2px black">
-                        <span>{{x[4]}}&#37;</span>
-                        <span>&#10052;{{x[6]}}"</span>
+                    <h2 style="text-align: center; text-shadow: 2px 2px 2px black;">
+                        <span style="font-size: 20px">{{x[4]}}&#37; &#10052;{{x[6]}}"</span>
                     </h2>
                     {% else %}
-                    <h2 style="color: black; text-align: center">
-                        <span style="color: black">{{x[5]}}&#37;"</span>
-                        <span style="color: black">{{x[6]}}"</span>
+                    <h2 style="color: black; text-align: center;">
+                        <span style="color: black;">{{x[5]}}&#37;"</span>
+                        <span style="color: black;">{{x[6]}}"</span>
                     </h2>
                     {% endif %}
                 </div>

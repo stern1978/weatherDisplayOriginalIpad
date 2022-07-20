@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta http-equiv='refresh' content="900">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel='stylesheet' href="/static/css/mystyle.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="/static/js/time.js"></script>
+        <title>Home</title>
+    </head>
+    <body onload=display_ct();>
+        <table style="width:100%">
+            <tr>
+                <td>
+                    <div id="time" style="font-size: 250px; text-align: center"></div>
+                    <!--img src="static/sunrise.png">{{sunrise}}
+                    <img src="static/sunset.png">{{sunset}}
+                    <img src="static/sunrise.png">{{sunrisetomorrow}}-->
+                </td>
+            </tr>
+        </table>
+        <table style="width:100%">
+            <tr>
+                <td style="width: 25%">
+                    <p style="text-align: left">Inside</p>
+                    <h1 style="text-align: left; font-size: 100px">{{avgtemp}}&#8457;</h1>
+                </td>
+                <td style="width: 25%">
+                    <img style="width: 100%;" src={{icon}} alt="weather img">
+                </td>
+                <td style="width: 25%">
+                    <p style="text-align: center">Feels Like {{realfeel}}&#8457;</p>
+                    <h1 style="font-size: 100px">{{outsidetemp}}&#8457;</h1>
+                    </td>
+            </tr>
+        </table>
+        <table style="width:100%">
+            <tr>
+                {% for x in forcast %}
+                <td>
+                <div class="container">
+                    <h2 style="text-align: center">{{x[0]}}</h2>
+                    <img style="float: left; width: 75%" src={{x[3]}} alt="weather img">
+                    <h2 style="color: red">{{x[1]}}</h2> 
+                    <h2 style="color: blue">{{x[2]}}</h2>
+                    {% if forcast[0][5] != 0 and forcast[0][6] != 0 %}
+                    <h2 style="text-align: right">{{x[5]}}"</h2>
+                    <h2 style="text-align: right">{{x[6]}}"</h2>
+                    {% elif x[5] != 0 %}
+                    <h2 style="text-align: right">{{x[5]}}"</h2>
+                    <h2 style="color: black; text-align: right">0"</h2>
+                    {% elif x[6] != 0 %}
+                    <h2 style="text-align: right">{{x[6]}}"</h2>
+                    <h2 style="color: black; text-align: right">0</h2>
+                    {% else %}
+                    <h2 style="color: black; text-align: right">0"</h2>
+                    <h2 style="color: black; text-align: right">0"</h2>
+                    {% endif %}
+                </div>
+                </td>
+                {% endfor %}
+            </tr>
+        </table>
+        {% if alerts %}
+        <h2 style="text-align: center">Alerts: {{alerts}}</h2>
+        {% endif %}
+    </body>
+</html>

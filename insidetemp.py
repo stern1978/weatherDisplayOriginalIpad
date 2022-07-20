@@ -2,9 +2,10 @@
 
 import requests
 import json
+import config
 
-key = 'uF0cIT4Fxu50HpPqyFqtjofmfSMdtWmVg97ZPh7c'  # os.environ.get('HUE_API')
-url = "http://192.168.1.151/api/" + key + "/sensors"
+key = config.hue_api
+url = "http://192.168.1.248/api/" + key + "/sensors"
 room_temp = []
 get = requests.get(url)
 weather_data = get.json()

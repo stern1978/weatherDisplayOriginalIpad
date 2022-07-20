@@ -16,35 +16,10 @@ outside_temp = round(weather_data['main']['temp'])
 real_feel = round(weather_data['main']['feels_like'])
 high = round(weather_data['main']['temp_max'])
 low = round(weather_data['main']['temp_min'])
-# humidity = weather_data['current']['humidity']
-# dew_point = weather_data['current']['dew_point']
-# uv = weather_data['current']['uvi']
+humidity = weather_data['main']['humidity']
 clouds = weather_data['clouds']['all']
 description = weather_data['weather'][0]['description'].title()
-icon = '/static/' + weather_data['weather'][0]['icon'] + '.png'
-try:
-    rain = round(weather_data['daily'][0]['rain'] / 25.4, 2)
-except KeyError:
-    rain = 0.00
-try:
-    if outside_temp in range(28, 35):
-        snow = round(weather_data['daily'][0]['snow'] / 25.4 * 10, 2)
-    elif outside_temp in range(20, 28):
-        snow = round(weather_data['daily'][0]['snow'] / 25.4 * 15, 2)
-    elif outside_temp in range(15, 20):
-        snow = round(weather_data['daily'][0]['snow'] / 25.4 * 20, 2)
-    elif outside_temp in range(10, 15):
-        snow = round(weather_data['daily'][0]['snow'] / 25.4 * 30, 2)
-    elif outside_temp in range(0, 10):
-        snow = round(weather_data['daily'][0]['snow'] / 25.4 * 40, 2)
-    elif outside_temp in range(-20, 0):
-        snow = round(weather_data['daily'][0]['snow'] / 25.4 * 50, 2)
-    elif outside_temp in range(-100, -20):
-        snow = round(weather_data['daily'][0]['snow'] / 25.4 * 100, 2)
-    else:
-        snow = round(weather_data['daily'][0]['snow'] / 25.4 * 1, 2)
-except KeyError:
-    snow = 0.00
+icon = '/static/png/' + weather_data['weather'][0]['icon'] + '.png'
 
 try:
     rain_hr = round(weather_data['rain']['1h'] / 25.4, 2)
@@ -74,15 +49,14 @@ data = {'outside_temp': outside_temp,
         'real_feel': real_feel,
         'high': high,
         'low': low,
-        'rain': rain,
-        'snow': snow,
         'rain_hr': rain_hr,
         'snow_hr': snow_hr,
         'sunrise': sunrise,
         'sunset': sunset,
         'clouds': clouds,
         'description': description,
-        'icon': icon}
+        'icon': icon,
+        'humidity': humidity}
 
 with open('/home/pi/IpadDisplay/current.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=4)

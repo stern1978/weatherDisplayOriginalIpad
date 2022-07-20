@@ -1,0 +1,14 @@
+{
+    "outside_temp": 73,
+    "real_feel": 74,
+    "high": 75,
+    "low": 68,
+    "rain_hr": 0.0,
+    "snow_hr": 0.0,
+    "sunrise": "05:38 AM",
+    "sunset": "08:25 PM",
+    "clouds": 20,
+    "description": "Few Clouds",
+    "icon": "/static/png/02n.png",
+    "humidity": 82
+}
