@@ -20,6 +20,7 @@ humidity = weather_data['main']['humidity']
 clouds = weather_data['clouds']['all']
 description = weather_data['weather'][0]['description'].title()
 icon = '/static/png/' + weather_data['weather'][0]['icon'] + '.png'
+#icon = '/static/svg/' + weather_data['weather'][0]['icon'] + '.svg'
 
 try:
     rain_hr = round(weather_data['rain']['1h'] / 25.4, 2)
